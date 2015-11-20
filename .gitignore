@@ -1,0 +1,15 @@
+*.class
+web/WEB-INF/lib
+
+web/www/ext
+web/www/build
+web/www/resources
+
+!web/www/resources/images
+
+web/wwt/touch
+web/wwt/build
+web/wwt/resources
+.idea/workspace.xml
+out
+
