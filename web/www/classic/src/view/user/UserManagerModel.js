@@ -3,6 +3,7 @@ Ext.define('XApp.view.user.UserManagerModel', {
     alias: 'viewmodel.user-usermanager',
     data: {
         name: 'XApp'
+<<<<<<< HEAD
     },
 
     stores: {
@@ -16,6 +17,8 @@ Ext.define('XApp.view.user.UserManagerModel', {
             session: true,
             autoLoad: true
         }
+=======
+>>>>>>> cdugrid
     }
 
 });

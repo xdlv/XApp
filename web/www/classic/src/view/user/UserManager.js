@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 Ext.define("XApp.view.user.UserManager", {
+=======
+
+Ext.define("XApp.view.user.UserManager",{
+>>>>>>> cdugrid
     extend: "Ext.panel.Panel",
 
     requires: [
@@ -12,6 +17,7 @@ Ext.define("XApp.view.user.UserManager", {
         type: "user-usermanager"
     },
 
+<<<<<<< HEAD
     layout: {
         type: 'vbox',
         align: 'stretch'
@@ -83,5 +89,11 @@ Ext.define("XApp.view.user.UserManager", {
                 dataIndex: 'name'
             }]
         }]
+=======
+    items: [{
+        xtype: 'cduGrid',
+        modelName: '用户',
+        model: 'User'
+>>>>>>> cdugrid
     }]
 });
