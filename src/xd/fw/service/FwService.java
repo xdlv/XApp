@@ -3,6 +3,7 @@ package xd.fw.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import xd.fw.bean.Mod;
 import xd.fw.bean.User;
 
 import java.util.List;
@@ -18,4 +19,6 @@ public interface FwService extends BaseService{
     void saveOrUpdateUser(User user);
 
     void deleteUserById(Integer id);
+
+    List<Mod> getUserMods(Integer userId);
 }

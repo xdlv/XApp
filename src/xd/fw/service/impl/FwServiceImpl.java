@@ -2,7 +2,9 @@ package xd.fw.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import xd.fw.bean.Mod;
 import xd.fw.bean.User;
+import xd.fw.bean.mapper.ModMapper;
 import xd.fw.bean.mapper.UserMapper;
 import xd.fw.service.FwService;
 
@@ -11,6 +13,9 @@ import java.util.List;
 public class FwServiceImpl extends BaseServiceImpl implements FwService {
     @Autowired
     UserMapper userMapper;
+    @Autowired
+    ModMapper modMapper;
+
     @Override
     public User userLogin(String name, String pwd) {
         return userMapper.selectUserByNameAndPwd(name,pwd);
@@ -40,5 +45,10 @@ public class FwServiceImpl extends BaseServiceImpl implements FwService {
     @Override
     public void deleteUserById(Integer id) {
         userMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Mod> getUserMods(Integer userId) {
+        return modMapper.selectUserMods(userId);
     }
 }

@@ -17,85 +17,62 @@ Ext.define('XApp.controller.Root', {
             }
     	});
     },
+    showUi: function(user,records){
+        var root = {
+            expanded: true,
+            children:[]
+        };
+        var map={0 : root};
+        Ext.each(records, function(v,i,a){
+            var id = v.get('id');
+            var routerId = v.get('routerid');
+            var viewId;
+            if (!map[id]){
+                map[id] = {
+                    text: v.get('name'),
+                    iconCls: v.get('addition'),
+                    children:[]
+                };
+            }
+            if (!Ext.isEmpty(routerId)){
+                viewId = routerId.substring(0,routerId.indexOf('-')).concat(
+                    '.',routerId.substring(routerId.indexOf('-') + 1));
+                map[id].view= viewId;
+                map[id].routeId = routerId;
+                map[id].leaf = true;
+            }
+            var parent = map[v.get('parentid')];
+            if (!parent){
+                parent = map[v.get('parentid')]={
+                    children:[]
+                };
+            }
+            parent.children.push(map[id]);
+        });
+        Ext.create('XApp.view.main.Main',{
+            session: this.session,
+            viewModel: {
+                data : {
+                    currentUser : user
+                },
+                stores: {
+                    navItems: Ext.create('Ext.data.TreeStore',{
+                        root: root
+                    })
+                }
+            }
+        });
+    },
     onLogin: function(view,user){
     	this.login.destroy();
-        var menu = {
-            type: 'tree',
-            root: {
-                expanded: true,
-                children: [{
-                    text: '用户管理',
-                    iconCls: 'x-fa fa-user',
-                    leaf: true,
-                    view: 'user.ModUser',
-                    routeId: 'user-ModUser'
-                },{
-                    text: '导入导出',
-                    iconCls: 'x-fa fa-wrench',
-                    children: [{
-                        text: '手机号码导入',
-                        iconCls: 'x-fa fa-share-alt',
-                        leaf: true,
-                        view : 'importA.ImportTelphone',
-                        routeId: 'importA-ImportTelphone'
-                    },{
-                        text: '对账文件导入',
-                        iconCls: 'x-fa fa-flag',
-                        view: 'importA.ImportDz',
-                        routeId: 'importA-ImportDz',
-                        leaf: true
-                    },{
-                        text: '对账结果导出',
-                        view: 'exportA.DzExport',
-                        routeId: 'exportA-DzExport',
-                        iconCls: 'x-fa fa-signal',
-                        leaf: true
-                    }]
-                },{
-                    text: '消息通知',
-                    view: 'notify.Notification',
-                    routeId : 'notify-Notification',
-                    iconCls: 'x-fa fa-music',
-                    leaf: true
-                }]
-            }
-        };
-        // normal user, remove some menus
-        if (user.get('userRole') == 1){
-            menu = {
-                type: 'tree',
-                root: {
-                    expanded: true,
-                    children: [{
-                        text: '导入导出',
-                        iconCls: 'x-fa fa-wrench',
-                        children: [{
-                            text: '手机号码导入',
-                            iconCls: 'x-fa fa-share-alt',
-                            leaf: true,
-                            view : 'importA.ImportTelphone',
-                            routeId: 'importA-ImportTelphone'
-                        },{
-                            text: '对账结果导出',
-                            view: 'exportA.DzExport',
-                            routeId: 'exportA-DzExport',
-                            iconCls: 'x-fa fa-signal',
-                            leaf: true
-                        }]
-                    }]
+        var me = this;
+        user.mods().load({
+            url: 'mod!obtainUserMods.cmd',
+            callback: function(records, operation, success){
+                if (success){
+                    me.showUi(user,records);
                 }
-            };
-        }
-    	Ext.create('XApp.view.main.Main',{
-    		session: this.session,
-    		viewModel: {
-    			data : {
-    				currentUser : user
-    			},
-				stores: {
-					navItems: menu
-				}
-    		}
-    	});
+            }
+        });
     }
 });

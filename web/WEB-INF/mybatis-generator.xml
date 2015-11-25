@@ -42,7 +42,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table tableName="t_primary_key" enableCountByExample="false"
+        <!--<table tableName="t_primary_key" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false" domainObjectName="PrimaryKey" />
 
@@ -51,18 +51,18 @@
                enableUpdateByExample="false" domainObjectName="User" />
         <table tableName="T_Role" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false" domainObjectName="Role" />
+               enableUpdateByExample="false" domainObjectName="Role" />-->
 
         <table tableName="T_Mod" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false" domainObjectName="Mod" />
 
-        <table tableName="T_UserRole" enableCountByExample="false"
+        <!--<table tableName="T_UserRole" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false" domainObjectName="UserRole" />
 
         <table tableName="T_RoleMod" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false" domainObjectName="RoleMod" />
+               enableUpdateByExample="false" domainObjectName="RoleMod" />-->
     </context>
 </generatorConfiguration>

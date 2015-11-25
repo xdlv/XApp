@@ -10,14 +10,6 @@ Ext.define("XApp.view.user.ModUser", {
 	},
 
 	margin: '10',
-	columns : [ {
-		text : "用户名",
-		sortable : true,
-		dataIndex : 'name'
-	}, {
-		text : "邮箱",
-		dataIndex : 'mail'
-	} ],
 	columnLines : true,
 	bind : '{loginUsers}',
 	selModel : {

@@ -63,6 +63,27 @@ public abstract class BaseAction extends ActionSupport {
 
     protected boolean success = true;
 
+    String[] filter;
+
+    public String[] getFilter() {
+        return filter;
+    }
+
+    public void setFilter(String[] filter) {
+        this.filter = filter;
+    }
+
+    public String obtainFilterValue(){
+        if (filter == null){
+            return null;
+        }
+        for (String fl : filter){
+            int start = fl.indexOf("\"value\":") + 8;
+            return fl.substring(start , fl.indexOf(",", start));
+        }
+        return null;
+    }
+
     public int getStart() {
         return start;
     }

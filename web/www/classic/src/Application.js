@@ -8,7 +8,7 @@ Ext.define('XApp.Application', {
     controllers: ['Root@XApp.controller'],
     models: ['User','Mod'],
     stores: [
-        // TODO: add global / shared stores here
+        
     ],
     
     onLaunch: function () {

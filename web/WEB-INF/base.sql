@@ -25,6 +25,7 @@ create table T_Mod(
     name VARCHAR(50),
     url varchar(50),
     routerId varchar(50),
+    addition VARCHAR(50),
     parentId int
 );
 
@@ -51,10 +52,13 @@ insert into t_role values(-1,'guest');
 insert into t_userrole values(-2,-10,-2);-- administrator
 insert into t_userrole values(-1,-9,-1); -- guest
 
-insert into t_mod values(-100,'系统配置','x-fa fa-user',null,0);
-insert into t_mod values(-99,'用户管理','x-fa fa-user','user-UserManager',-100);
-insert into t_mod values(-98,'权限管理','x-fa fa-user-secret','user-RoleManager',-100);
-insert into t_mod values(-97,'角色管理','x-fa fa-user-secret','user-RoleManager',-100);
+insert into t_mod values(-100,'系统配置',null,null,'x-fa fa-user',0);
+insert into t_mod values(-99,'用户管理',null,'user-UserManager','x-fa fa-user',-100);
+insert into t_mod values(-98,'权限管理',null,'user-RoleManager','x-fa fa-user-secret',-100);
+insert into t_mod values(-97,'角色管理',null,'user-RoleManager','x-fa fa-user-secret',-100);
+
+insert into t_rolemod values(-2,-1,-100);
+insert into t_rolemod values(-1,-1,-99);
 
 
 

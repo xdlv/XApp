@@ -6,9 +6,7 @@
 	<constant name="struts.action.extension" value="cmd"/>
     <constant name="struts.devMode" value="true"/>
     <!-- 开发模式 -->
-    <constant name="struts.configuration.xml.reload" value="true" />
-    <!-- 配置文件重新加载 -->
-    <constant name="struts.i18n.encoding" value="UTF-8"/>                           <!-- Web运用编码 -->
+    <constant name="struts.configuration.xml.reload" value="true" /> 	<!-- Web运用编码 -->
 
     <!-- 搜索视图资源的路径 -->
     <constant name="struts.convention.action.name.separator" value="_" />    <!-- Action类名分隔符 -->
