@@ -2,12 +2,6 @@ Ext.define("XApp.view.CDUGrid", {
     extend: "Ext.grid.Panel",
     xtype: 'cduGrid',
 
-    requires: [
-        "XApp.view.CDUGridController",
-        "XApp.view.CDUGridModel"
-    ],
-
-
     constructor: function (config) {
         config.tbar = {
             margin: '0 0 10 10',
@@ -30,6 +24,23 @@ Ext.define("XApp.view.CDUGrid", {
                 text: '删除' + config.modelName,
                 handler: 'del' + config.model
             }]
+        };
+        config.bind= {
+            columns : config.columns,
+            store : '{'+config.model+'}'
+        };
+
+        config.selModel= {
+            type : 'checkboxmodel',
+                listeners : {
+                selectionchange : 'onSelection'+config.model+'Change'
+            }
+        };
+
+        config.bbar ={
+            xtype : "pagingtoolbar",
+                displayInfo : true,
+                bind: '{'+config.model+'}'
         };
         this.callParent(arguments);
     }

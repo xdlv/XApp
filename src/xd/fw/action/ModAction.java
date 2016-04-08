@@ -12,7 +12,7 @@ public class ModAction extends BaseAction{
     @Autowired
     FwService fwService;
     List<Mod> mods;
-    public String obtainUserMods(){
+    public String obtainUserMods() throws Exception {
         mods = fwService.getUserMods(Integer.parseInt(obtainFilterValue()));
         return SUCCESS;
     }

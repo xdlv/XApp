@@ -6,9 +6,8 @@ Ext.define('XApp.Application', {
     name: 'XApp',
     
     controllers: ['Root@XApp.controller'],
-    models: ['User','Mod'],
+    models: ['User','Mod','Role'],
     stores: [
-        
     ],
     
     onLaunch: function () {

@@ -7,7 +7,7 @@ Ext.define('XApp.view.user.UserManagerController', {
     },
     modUser: function(btn){
         var users = btn.up('grid').getSelection();
-        console.log(this.getViewModel().getData().user);
+        //console.log(this.getViewModel().getData().user);
         Ext.create('XApp.view.user.AddUser',{
             viewModel: {
                 data: {
