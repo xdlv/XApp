@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import xd.fw.FwException;
 import xd.fw.I18n;
-import xd.fw.bean.Mod;
 import xd.fw.bean.User;
 import xd.fw.service.FwService;
 
@@ -51,10 +50,6 @@ public class UserAction extends BaseAction {
     public String version(){
         version = I18n.getI18n("version");
         return SUCCESS;
-    }
-
-    public void setFwService(FwService fwService) {
-        this.fwService = fwService;
     }
 
     public void setUser(User user) {

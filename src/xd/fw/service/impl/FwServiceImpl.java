@@ -3,8 +3,10 @@ package xd.fw.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import xd.fw.bean.Mod;
+import xd.fw.bean.Role;
 import xd.fw.bean.User;
 import xd.fw.bean.mapper.ModMapper;
+import xd.fw.bean.mapper.RoleMapper;
 import xd.fw.bean.mapper.UserMapper;
 import xd.fw.service.FwService;
 
@@ -15,6 +17,8 @@ public class FwServiceImpl extends BaseServiceImpl implements FwService {
     UserMapper userMapper;
     @Autowired
     ModMapper modMapper;
+    @Autowired
+    RoleMapper roleMapper;
 
     @Override
     public User userLogin(String name, String pwd) {
@@ -50,5 +54,30 @@ public class FwServiceImpl extends BaseServiceImpl implements FwService {
     @Override
     public List<Mod> getUserMods(Integer userId) {
         return modMapper.selectUserMods(userId);
+    }
+
+    @Override
+    public List<Role> getRoles(int start, int limit) {
+        return roleMapper.selectRoles(start, limit);
+    }
+
+    @Override
+    public void deleteRoleById(Integer id) {
+        roleMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public void saveOrUpdateRole(Role role) {
+        if (role.getId() != null){
+            roleMapper.updateByPrimaryKey(role);
+        } else {
+            role.setId(getPrimaryKey("t_role"));
+            roleMapper.insert(role);
+        }
+    }
+
+    @Override
+    public int getRolesCount() {
+        return roleMapper.selectRoleCount();
     }
 }

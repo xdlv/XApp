@@ -61,9 +61,8 @@ insert into t_rolemod values(-2,-1,-100);
 insert into t_rolemod values(-1,-1,-99);
 
 
-
-
-
+SELECT DISTINCT m.* FROM t_mod m, t_userrole ur, t_rolemod rm
+WHERE ur.userId=-10 AND (ur.roleId = rm.roleId AND rm.modId = m.id || ur.roleId=-2)
 
 
 

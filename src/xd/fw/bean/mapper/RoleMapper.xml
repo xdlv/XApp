@@ -87,4 +87,19 @@
     set name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+    <select id="selectRoles" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from t_role limit #{start,jdbcType=INTEGER} , #{limit,jdbcType=INTEGER}
+    </select>
+
+    <select databaseId="oracle" id="selectRoles" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select * from ( select * from t_role where rownum &lt;= ${start} + ${limit})
+        where rownum &gt; #{start,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectRoleCount" resultType="java.lang.Integer">
+        select  count(*) from t_role
+    </select>
 </mapper>

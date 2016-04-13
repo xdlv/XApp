@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import xd.fw.bean.Mod;
+import xd.fw.bean.Role;
 import xd.fw.bean.User;
 
 import java.util.List;
@@ -21,4 +22,12 @@ public interface FwService extends BaseService{
     void deleteUserById(Integer id);
 
     List<Mod> getUserMods(Integer userId);
+
+    int getRolesCount();
+
+    List<Role> getRoles(int start, int limit);
+
+    void deleteRoleById(Integer id);
+
+    void saveOrUpdateRole(Role role);
 }

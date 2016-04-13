@@ -1,6 +1,9 @@
 package xd.fw.bean.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import xd.fw.bean.Role;
+
+import java.util.List;
 
 public interface RoleMapper {
     /**
@@ -50,4 +53,8 @@ public interface RoleMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Role record);
+
+    List<Role> selectRoles(@Param("start")int start, @Param("limit")int limit);
+
+    int selectRoleCount();
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - xapp@localhost" uuid="9d8ca3ab-bbb8-4d94-b8f3-956cdb719db8">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>xapp.*</schema-pattern>
+      <default-schemas>xapp.*</default-schemas>
+    </data-source>
+  </component>
+</project>
