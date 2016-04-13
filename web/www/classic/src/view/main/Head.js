@@ -10,7 +10,7 @@ Ext.define('XApp.view.main.Head', {
             reference: 'senchaLogo',
             cls: 'company-logo',
             html: '<div class="main-logo"><img src="resources/images/company-logo.png">' + 
-            	'江苏移动终端公司</div>',
+            	'XApp</div>',
             width: 250
         },
         {

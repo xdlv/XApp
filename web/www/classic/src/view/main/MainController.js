@@ -47,7 +47,8 @@ Ext.define('XApp.view.main.MainController', {
                     data : {
                         currentUser: this.getViewModel().getData().currentUser
                     }
-                }
+                },
+                padding: '10 5 5 10'
             });
         }
 

@@ -1,99 +1,49 @@
-<<<<<<< HEAD
 Ext.define("XApp.view.user.UserManager", {
-=======
-
-Ext.define("XApp.view.user.UserManager",{
->>>>>>> cdugrid
-    extend: "Ext.panel.Panel",
+    extend: "Ext.tab.Panel",
 
     requires: [
         "XApp.view.user.UserManagerController",
         "XApp.view.user.UserManagerModel",
-        "XApp.view.CDUGrid"
+        "XApp.view.cdu.CDUGrid",
+        "XApp.view.mod.ModTree"
     ],
+
+    bodyPadding: '10 10 10 0',
+    activeTab: 0,
+    plain: true,
 
     controller: "user-usermanager",
     viewModel: {
         type: "user-usermanager"
     },
 
-<<<<<<< HEAD
-    layout: {
-        type: 'vbox',
-        align: 'stretch'
-    },
-
     items: [{
-        xtype: 'container',
-        flex: 1,
-        margin: 10,
-        layout: {
-            type: 'hbox',
-            align: 'stretch'
-        },
-        items: [{
-            xtype: 'cduGrid',
-            modelName: '用户',
-            model: 'User',
-            flex: 1,
-            columns: [{
-                text: "用户名",
-                sortable: true,
-                dataIndex: 'name'
-            }, {
-                text: "邮箱",
-                dataIndex: 'mail'
-            }]
-        },{
-            xtype: 'cduGrid',
-            modelName: '角色',
-            model: 'Role',
-            margin: '0 0 0 10',
-            flex: 1,
-            columns: [{
-                text: "角色名",
-                sortable: true,
-                dataIndex: 'name'
-            }]
-        }]
-    },{
-        xtype: 'container',
-        flex: 1,
-        margin: 10,
-        layout: {
-            type: 'hbox',
-            align: 'stretch'
-        },
-        items: [{
-            xtype: 'cduGrid',
-            modelName: '权限',
-            model: 'Mod',
-            flex: 1,
-            columns: [{
-                text: "名称",
-                sortable: true,
-                dataIndex: 'name'
-            }, {
-                text: "邮箱",
-                dataIndex: 'mail'
-            }]
-        },{
-            xtype: 'cduGrid',
-            modelName: '角色',
-            model: 'Role',
-            margin: '0 0 0 10',
-            flex: 1,
-            columns: [{
-                text: "角色名",
-                sortable: true,
-                dataIndex: 'name'
-            }]
-        }]
-=======
-    items: [{
+        title: '登陆用户',
         xtype: 'cduGrid',
         modelName: '用户',
-        model: 'User'
->>>>>>> cdugrid
+        model: 'User',
+        flex: 1,
+        columns: [{
+            text: "用户名",
+            sortable: true,
+            dataIndex: 'name'
+        }, {
+            text: "邮箱",
+            dataIndex: 'mail'
+        }]
+    }, {
+        title: '角色管理',
+        xtype: 'cduGrid',
+        modelName: '角色',
+        model: 'Role',
+        flex: 1,
+        columns: [{
+            text: "角色名",
+            sortable: true,
+            dataIndex: 'name'
+        }]
+    }, {
+        xtype: 'modtree',
+        title: '权限管理'
     }]
 });
