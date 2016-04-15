@@ -56,5 +56,7 @@ public interface RoleMapper {
 
     List<Role> selectRoles(@Param("start")int start, @Param("limit")int limit);
 
+    List<Role> selectUserRoles(@Param("userId")int userId);
+
     int selectRoleCount();
 }

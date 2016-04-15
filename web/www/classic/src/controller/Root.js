@@ -27,13 +27,11 @@ Ext.define('XApp.controller.Root', {
             var id = v.get('id');
             var routerId = v.get('routerid');
             var viewId;
-            if (!map[id]){
-                map[id] = {
-                    text: v.get('name'),
-                    iconCls: v.get('addition'),
-                    children:[]
-                };
-            }
+            map[id] = Ext.applyIf(map[id] || {}, {
+                text: v.get('name'),
+                iconCls: v.get('addition'),
+                children:[]
+            });
             if (!Ext.isEmpty(routerId)){
                 viewId = routerId.substring(0,routerId.indexOf('-')).concat(
                     '.',routerId.substring(routerId.indexOf('-') + 1));

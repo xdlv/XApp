@@ -75,6 +75,8 @@ public abstract class BaseAction extends ActionSupport {
         this.filter = filter;
     }
 
+    String node;
+
     public String obtainFilterValue()throws Exception{
         if (filter == null){
             return null;
@@ -192,6 +194,10 @@ public abstract class BaseAction extends ActionSupport {
             fileName = new String(fileName.getBytes("UTF-8"), "ISO-8859-1");
         }
         return fileName;
+    }
+
+    public void setNode(String node) {
+        this.node = node;
     }
 
     public static void main(String[] args) throws IllegalAccessException, InvocationTargetException {

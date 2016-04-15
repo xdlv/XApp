@@ -30,4 +30,10 @@ public interface FwService extends BaseService{
     void deleteRoleById(Integer id);
 
     void saveOrUpdateRole(Role role);
+
+    void saveOrUpdateMod(Mod mod);
+
+    List<Mod> getModsByRole(Integer roleId);
+
+    List<Role> getUserRoles(Integer userId);
 }

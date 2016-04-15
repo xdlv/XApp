@@ -1,30 +1,30 @@
 Ext.define('XApp.Util', {
     singleton: true,
 
-    ajax: function(obj){
+    ajax: function (objs) {
         Ext.Ajax.request({
-            url: obj.url,
-            method : obj.method ? obj.method : 'POST',
-            params: obj.params,
-            scope: obj.scope,
-            success : function(response){
+            url: objs.url,
+            method: objs.method ? objs.method : 'POST',
+            params: objs.params,
+            scope: objs.scope,
+            success: function (response) {
                 var jsonObj = Ext.decode(response.responseText, true);
-                if (jsonObj == null || !jsonObj.success){
-                    jsonObj.success(jsonObj);
-                } else {
-                    if (jsonObj.failure){
-                        jsonObj.failure(jsonObj);
-                    } else {
-                        Ext.MessageBox.alert('提示','操作失败:' + jsonObj == null ? "" : jsonObj.msg);
-                    }
+                var blockTips = false;
+                if (objs.success) {
+                    blockTips = objs.success(jsonObj);
+                }
+                if (!blockTips) {
+                    Ext.MessageBox.alert('提示', '操作成功');
                 }
             },
-            failure: function(response){
+            failure: function (response) {
                 var jsonObj = Ext.decode(response.responseText, true);
-                if (jsonObj.failure){
-                    jsonObj.failure(jsonObj);
-                } else {
-                    Ext.MessageBox.alert('提示','操作失败:' + jsonObj == null ? "" : jsonObj.msg);
+                var blockTips = false;
+                if (objs.failure) {
+                    blockTips = objs.failure(jsonObj);
+                }
+                if (!blockTips) {
+                    Ext.MessageBox.alert('错误', '操作失败:' + jsonObj == null ? "" : jsonObj.msg);
                 }
             }
         });

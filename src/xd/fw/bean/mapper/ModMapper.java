@@ -55,4 +55,6 @@ public interface ModMapper {
     int updateByPrimaryKey(Mod record);
 
     List<Mod> selectUserMods(@Param("userId")Integer userId);
+
+    List<Mod> selectModByRole(@Param("roleId")Integer roleId);
 }

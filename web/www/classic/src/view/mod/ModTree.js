@@ -1,15 +1,14 @@
-Ext.define("XApp.view.mod.ModTree",{
+Ext.define("XApp.view.mod.ModTree", {
     extend: "Ext.tree.Panel",
     xtype: 'modtree',
-    requires: [
-        "XApp.view.mod.ModTreeController",
-        "XApp.view.mod.ModTreeModel"
-    ],
 
-    controller: "mod-modtree",
-    viewModel: {
-        type: "mod-modtree"
-    },
+    store: Ext.create('XApp.store.ModTree'),
 
-    html: "Hello, World!!"
+    rootVisible: true,
+    root: {
+        text: '所有权限',
+        expend: true,
+        checked: false,
+        modId: 0
+    }
 });

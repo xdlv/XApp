@@ -35,6 +35,7 @@
     delete from t_userrole
     where id = #{id,jdbcType=INTEGER}
   </delete>
+
   <insert id="insert" parameterType="xd.fw.bean.UserRole">
     <!--
       WARNING - @mbggenerated
@@ -100,4 +101,8 @@
       roleId = #{roleid,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <delete id="deleteByUserId"  parameterType="java.lang.Integer">
+    delete from t_userrole where userId = #{userid,jdbcType=INTEGER}
+  </delete>
 </mapper>

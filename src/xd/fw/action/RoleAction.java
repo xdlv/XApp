@@ -2,7 +2,9 @@ package xd.fw.action;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import xd.fw.bean.Mod;
 import xd.fw.bean.Role;
+import xd.fw.bean.User;
 import xd.fw.service.FwService;
 
 import java.util.List;
@@ -14,11 +16,19 @@ public class RoleAction extends BaseAction {
     Role role;
     List<Role> roles;
 
+    User user;
+
     public String obtainRoles() {
         total = fwService.getRolesCount();
         roles = fwService.getRoles(start, limit);
         return SUCCESS;
     }
+
+    public String obtainUserRoles() {
+        roles = fwService.getUserRoles(user.getId());
+        return SUCCESS;
+    }
+
     public String deleteRole() {
         for (int i=0; roles != null && i<roles.size();i++){
             fwService.deleteRoleById(roles.get(i).getId());
@@ -45,5 +55,13 @@ public class RoleAction extends BaseAction {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
     }
 }

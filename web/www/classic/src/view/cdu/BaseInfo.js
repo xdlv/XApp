@@ -24,6 +24,7 @@ Ext.define("XApp.view.cdu.BaseInfo", {
             }
         }]
     }],
+
     constructor: function (config) {
         this.callParent(arguments);
     },

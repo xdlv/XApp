@@ -50,4 +50,6 @@ public interface UserRoleMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(UserRole record);
+
+    void deleteByUserId(Integer userId);
 }

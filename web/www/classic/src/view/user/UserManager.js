@@ -5,7 +5,7 @@ Ext.define("XApp.view.user.UserManager", {
         "XApp.view.user.UserManagerController",
         "XApp.view.user.UserManagerModel",
         "XApp.view.cdu.CDUGrid",
-        "XApp.view.mod.ModTree"
+        "XApp.view.mod.ModPanel"
     ],
 
     bodyPadding: '10 10 10 0',
@@ -43,7 +43,7 @@ Ext.define("XApp.view.user.UserManager", {
             dataIndex: 'name'
         }]
     }, {
-        xtype: 'modtree',
+        xtype: 'modpanel',
         title: '权限管理'
     }]
 });

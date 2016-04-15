@@ -1,5 +1,6 @@
 package xd.fw.bean.mapper;
 
+import org.apache.ibatis.annotations.Param;
 import xd.fw.bean.RoleMod;
 
 public interface RoleModMapper {
@@ -50,4 +51,8 @@ public interface RoleModMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(RoleMod record);
+
+    RoleMod selectRoleModById(@Param("roleId")int roleId, @Param("modId")int modId);
+
+    int deleteByRoleId(@Param("roleId")int roleId);
 }

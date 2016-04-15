@@ -141,4 +141,9 @@
     ur.userId=#{userId,jdbcType=INTEGER}
     AND (ur.roleId = rm.roleId AND rm.modId = m.id || ur.roleId=-2)
   </select>
+
+  <select id="selectModByRole" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT m.* FROM t_mod m, t_rolemod rm WHERE rm.modId = m.id and rm.roleId=#{roleId,jdbcType=INTEGER}
+  </select>
+
 </mapper>

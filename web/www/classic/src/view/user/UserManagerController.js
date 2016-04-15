@@ -6,12 +6,11 @@ Ext.define('XApp.view.user.UserManagerController', {
         return btn.up('grid');
     },
     // user manager
-    openUserInfo: function (btn,user) {
-        Ext.create('XApp.view.cdu.BaseInfo', {
-            controller: this,
+    openUserInfo: function (btn, user) {
+        var win = Ext.create('XApp.view.cdu.BaseInfo', {
             viewModel: {
                 data: {
-                    operation: 'saveUser',
+                    operation: this.saveUser,
                     grid: this.getGrid(btn),
                     title: '用户信息',
                     user: user
@@ -38,15 +37,57 @@ Ext.define('XApp.view.user.UserManagerController', {
                 name: 'user.mail',
                 fieldLabel: '邮箱',
                 bind: '{user.mail}'
+            }, {
+                xtype: 'grid',
+                fieldLabel: '角色',
+                store: {
+                    model: 'Role',
+                    autoLoad: true
+                },
+                selModel: 'checkboxmodel',
+                columns: [{
+                    text: "角色名",
+                    sortable: true,
+                    dataIndex: 'name'
+                }]
             }]
-        }).show();
+        });
+        win.show(null, function () {
+            if (!user) {
+                return;
+            }
+            Ext.defer(function () {
+                XApp.Util.ajax({
+                    url: 'role!obtainUserRoles.cmd',
+                    params: {'user.id': user.id},
+                    success: function (records) {
+                        var data = win.down('grid').getStore().getData();
+                        var checkModel = win.down('grid').getSelectionModel();
+                        Ext.each(data.items, function (d, j) {
+                            Ext.each(records.roles, function (r, i) {
+                                if (d.id == r.id) {
+                                    checkModel.select(d,true);
+                                }
+                            });
+                        });
+
+
+                        return true;
+                    }
+                });
+            }, 300);
+
+        });
     },
     saveUser: function (btn) {
-        var params = btn.up('form').getValues();
         var win = btn.up('window');
-        this.ajax({
+        var params = Ext.apply({}, btn.up('form').getValues());
+        Ext.each(win.down('grid').getSelection(), function (v, i) {
+            params['user.roles[' + i + '].id'] = v.id;
+        });
+        XApp.Util.ajax({
             url: 'user!saveUser.cmd',
-            params: btn.up('form').getValues(),
+            params: params,
             success: function (response) {
                 win.getViewModel().get('grid').getStore().reload();
                 win.close();
@@ -55,11 +96,11 @@ Ext.define('XApp.view.user.UserManagerController', {
     },
 
     addUser: function (btn) {
-        this.openUserInfo(btn,{});
+        this.openUserInfo(btn);
     },
     modUser: function (btn) {
         var users = this.getGrid(btn).getSelection();
-        this.openUserInfo(btn,Ext.apply({}, users[0]));
+        this.openUserInfo(btn, Ext.apply({}, users[0]));
     },
     delUser: function (btn) {
         var users = this.getGrid(btn).getSelection();
@@ -76,12 +117,11 @@ Ext.define('XApp.view.user.UserManagerController', {
         });
     },
     //role manager
-    openRoleInfo: function (btn,role) {
-        Ext.create('XApp.view.cdu.BaseInfo', {
-            controller: this,
+    openRoleInfo: function (btn, role) {
+        var win = Ext.create('XApp.view.cdu.BaseInfo', {
             viewModel: {
                 data: {
-                    operation: 'saveRole',
+                    operation: this.saveRole,
                     grid: this.getGrid(btn),
                     title: '角色信息',
                     role: role
@@ -97,15 +137,51 @@ Ext.define('XApp.view.user.UserManagerController', {
                 xtype: 'textfield',
                 fieldLabel: '角色名',
                 bind: '{role.name}'
+            }, {
+                xtype: 'modtree',
+                scrollable: true
             }]
-        }).show();
+        });
+        win.show(null, function () {
+            //select mods when modifying a role
+            if (!role) {
+                return;
+            }
+            XApp.Util.ajax({
+                url: 'mod!obtainModsByRole.cmd',
+                params: {'role.id': role.id},
+                success: function (records) {
+                    win.down('modtree').getRootNode().cascadeBy({
+                        before: function (node) {
+                            Ext.each(records.mods, function (v, i) {
+                                if (node.get('modId') == v.id) {
+                                    var tempNode = node;
+                                    while (tempNode) {
+                                        tempNode.set('checked', true);
+                                        tempNode = tempNode.parentNode;
+                                    }
+                                }
+                            });
+                        }
+                    });
+                    return true;
+                }
+            });
+        });
     },
     saveRole: function (btn) {
-        var params = btn.up('form').getValues();
         var win = btn.up('window');
-        this.ajax({
+        var mods = win.down('modtree').getChecked();
+
+        var params = Ext.apply({}, btn.up('form').getValues());
+
+        Ext.each(mods, function (v, i) {
+            params['role.mods[' + i + '].id'] = v.get('modId');
+        });
+
+        XApp.Util.ajax({
             url: 'role!saveRole.cmd',
-            params: btn.up('form').getValues(),
+            params: params,
             success: function (response) {
                 win.getViewModel().get('grid').getStore().reload();
                 win.close();
@@ -114,11 +190,11 @@ Ext.define('XApp.view.user.UserManagerController', {
     },
 
     addRole: function (btn) {
-        this.openRoleInfo(btn,{});
+        this.openRoleInfo(btn);
     },
     modRole: function (btn) {
         var roles = this.getGrid(btn).getSelection();
-        this.openRoleInfo(btn,Ext.apply({}, roles[0]));
+        this.openRoleInfo(btn, Ext.apply({}, roles[0]));
     },
     delRole: function (btn) {
         var roles = this.getGrid(btn).getSelection();
