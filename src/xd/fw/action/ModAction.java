@@ -35,6 +35,13 @@ public class ModAction extends BaseAction{
         return SUCCESS;
     }
 
+    public String delMod() throws Exception{
+        if (mods != null){
+            fwService.deleteMods(mods);
+        }
+        return FINISH;
+    }
+
     public Role getRole() {
         return role;
     }
@@ -58,5 +65,9 @@ public class ModAction extends BaseAction{
 
     public List<Mod> getMods() {
         return mods;
+    }
+
+    public void setMods(List<Mod> mods) {
+        this.mods = mods;
     }
 }

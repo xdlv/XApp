@@ -5,31 +5,15 @@ import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
-import org.apache.struts2.convention.annotation.ParentPackage;
+import org.apache.struts2.convention.annotation.*;
 import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import xd.fw.FwUtil;
 
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.regex.Pattern;
-
-import org.apache.struts2.convention.annotation.Action;
-
-import org.apache.struts2.convention.annotation.ExceptionMapping;
-
-import org.apache.struts2.convention.annotation.ExceptionMappings;
-
-import org.apache.struts2.convention.annotation.Namespace;
-
-import org.apache.struts2.convention.annotation.ParentPackage;
-
-import org.apache.struts2.convention.annotation.Result;
-
-import org.apache.struts2.convention.annotation.Results;
 
 @ParentPackage("json-default")
 @Namespace("")

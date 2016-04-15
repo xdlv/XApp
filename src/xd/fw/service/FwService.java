@@ -36,4 +36,6 @@ public interface FwService extends BaseService{
     List<Mod> getModsByRole(Integer roleId);
 
     List<Role> getUserRoles(Integer userId);
+
+    void deleteMods(List<Mod> mods);
 }

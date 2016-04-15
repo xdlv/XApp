@@ -115,6 +115,13 @@ public class FwServiceImpl extends BaseServiceImpl implements FwService {
     }
 
     @Override
+    public void deleteMods(List<Mod> mods) {
+        for (Mod mod : mods){
+            modMapper.deleteByPrimaryKey(mod.getId());
+        }
+    }
+
+    @Override
     public List<Mod> getModsByRole(Integer id) {
         return modMapper.selectModByRole(id);
     }

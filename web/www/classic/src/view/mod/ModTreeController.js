@@ -44,8 +44,25 @@ Ext.define('XApp.view.mod.ModTreeController', {
             url: 'mod!saveMod.cmd',
             params: btn.up('form').getValues(),
             success: function (response) {
-                win.getViewModel().get('tree').getStore().reload();
+                win.getViewModel().get('tree').down('modtree').getStore().reload();
                 win.close();
+            }
+        });
+    },
+
+    delMod: function(btn){
+        var modtree = this.getView().down('modtree');
+        var selected = modtree.getChecked();
+        var params = {};
+        Ext.each(selected, function (v,i) {
+            params['mods[' + i + '].id'] = v.get('modId');
+        });
+        this.ajax({
+            url: 'mod!delMod.cmd',
+            params: params,
+            success: function(record){
+                modtree.getStore().reload();
+                return true;
             }
         });
     },
