@@ -12,6 +12,16 @@
         <url-pattern>*.cmd</url-pattern>
     </filter-mapping>
 
+    <!--<filter>
+        <filter-name>session</filter-name>
+        <filter-class>xd.fw.SessionFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>session</filter-name>
+        <url-pattern>*.cmd</url-pattern>
+    </filter-mapping>-->
+
+
     <filter>
         <filter-name>struts2</filter-name>
         <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>

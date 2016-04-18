@@ -10,6 +10,7 @@ import org.jdom.Document;
 import org.jdom.Element;
 import org.jdom.input.SAXBuilder;
 import xd.fw.FwUtil;
+import xd.fw.bean.User;
 
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
@@ -35,6 +36,7 @@ public abstract class BaseAction extends ActionSupport {
     private static final long serialVersionUID = 1L;
 
     public final static String FINISH = "finish", LOGIN = "login", XML = "xml", EXCEL = "excel";
+    public static final String USER = "user";
     private static Pattern SPLITE_PATTERN = Pattern.compile(",");
 
     public final static String USER_NAME = "";
@@ -61,13 +63,13 @@ public abstract class BaseAction extends ActionSupport {
 
     String node;
 
-    public String obtainFilterValue()throws Exception{
-        if (filter == null){
+    public String obtainFilterValue() throws Exception {
+        if (filter == null) {
             return null;
         }
-        for (String fl : filter){
+        for (String fl : filter) {
             int start = fl.indexOf("\"value\":") + 8;
-            return fl.substring(start , fl.indexOf(",", start));
+            return fl.substring(start, fl.indexOf(",", start));
         }
         return null;
     }
@@ -100,11 +102,9 @@ public abstract class BaseAction extends ActionSupport {
         this._dc = _dc;
     }
 
-	/*
-     * public int currentUserId(){ return
-	 * (Integer)ServletActionContext.getRequest().getSession().getAttribute(
-	 * "userId"); }
-	 */
+    public static User currentUser() {
+        return (User) ServletActionContext.getRequest().getSession().getAttribute(USER);
+    }
 
     public boolean isSuccess() {
         return success;

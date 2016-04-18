@@ -1,6 +1,7 @@
 package xd.fw.action;
 
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import xd.fw.FwException;
@@ -23,6 +24,8 @@ public class UserAction extends BaseAction {
         if (userRecord != null) {
             users = new ArrayList<User>();
             users.add(userRecord);
+            //add session
+            ServletActionContext.getRequest().getSession().setAttribute(USER,userRecord);
         } else {
             throw new FwException("用户名或密码不正确");
         }

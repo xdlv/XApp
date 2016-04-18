@@ -29,7 +29,10 @@ Ext.define("XApp.view.login.Login", {
 			type : 'vbox',
 			align : 'stretch'
 		},
-		title : '用户登陆',
+		title : {
+			text: '<b>用户登陆</b>',
+			textAlign: 'center'
+		},
 		defaults:{
 			blankText: '该项不能为空'
 		},
