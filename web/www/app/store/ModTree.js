@@ -36,9 +36,5 @@ Ext.define('XApp.store.ModTree', {
                 return root.children;
             }
         }
-    },
-    root: {
-        expanded: true
-    },
-    autoLoad: true
+    }
 });

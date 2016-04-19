@@ -1,7 +1,6 @@
 Ext.define('XApp.Application', {
     extend: 'Ext.app.Application',
-    requires: ["XApp.store.ModTree"
-    ],
+    requires: [],
     name: 'XApp',
     
     controllers: ['Root@XApp.controller'],

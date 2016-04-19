@@ -7,7 +7,7 @@ Ext.define('XApp.controller.Root', {
     	this.session = new Ext.data.Session({
             autoDestroy: false
         });
-    	
+
     	this.login = Ext.create('XApp.view.login.Login',{
     		autoShow: true,
     		session : this.session,
