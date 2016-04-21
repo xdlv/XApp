@@ -61,6 +61,48 @@
 		<aop:advisor pointcut-ref="pc" advice-ref="userTxAdvice" />
 	</aop:config>
 
-	<context:component-scan base-package="xd.fw.service.impl"/>
+	<context:component-scan base-package="xd.fw">
+		<context:include-filter type="regex" expression=".service.impl.*"/>
+		<context:include-filter type="regex" expression=".job.*"/>
+	</context:component-scan>
+
+	<!--quartz jobs-->
+    <bean id = "baseJobDetail" abstract="true" class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+        <property name="targetObject">
+            <ref bean="baseJob"/>
+        </property>
+        <property name="targetMethod">
+            <value>execute</value>
+        </property>
+        <property name="concurrent">
+            <value>false</value>
+        </property>
+    </bean>
+
+	<bean id="memoryCheckJobDetail" parent="baseJobDetail">
+		<property name="targetObject">
+			<ref bean="memoryJob"/>
+		</property>
+	</bean>
+
+	<bean id="memoryCheckDoTime"
+		  class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+		<property name="jobDetail">
+			<ref bean="memoryCheckJobDetail"/>
+		</property>
+		<property name="cronExpression">
+			<value>0/30 * * * * ?</value>
+		</property>
+	</bean>
+
+	<bean id="startQuertz" lazy-init="false" autowire="no"
+		  class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<ref bean="memoryCheckDoTime"/>
+			</list>
+		</property>
+	</bean>
+
 
 </beans>
