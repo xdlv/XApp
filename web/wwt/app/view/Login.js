@@ -37,11 +37,23 @@ Ext.define('XApp.view.Login', {
                     {text: '其它', value: '其它'}
                 ]
             },{
-                xtype: 'button',
-                name: 'startTest',
+                xtype: 'container',
+                layout: 'hbox',
                 margin: '10 5 10 5',
-                text: '开始测试',
-                ui: 'confirm'
+                items:[{
+                    xtype: 'button',
+                    name: 'startTest',
+                    text: '开始测试',
+                    ui: 'confirm',
+                    flex: 2
+                },{
+                    xtype: 'button',
+                    name: 'viewReport',
+                    text: '统计',
+                    margin: '0 0 0 10',
+                    flex: 1
+
+                }]
             }]
         }]
     }

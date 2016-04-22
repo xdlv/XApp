@@ -56,4 +56,9 @@
       </if>
     </trim>
   </insert>
+  <select id="selectReports" resultType="xd.fw.bean.Grade">
+    select city,sum(1) as rightCount from t_grade group by city
+  </select>
+
+
 </mapper>

@@ -23,6 +23,8 @@ public class PracticeAction extends BaseAction{
     @Autowired
     GradeMapper gradeMapper;
 
+    List<Grade> grades;
+
     public synchronized String obtainQuestions(){
         Collections.shuffle(questionList);
         questions = questionList;
@@ -32,6 +34,18 @@ public class PracticeAction extends BaseAction{
     public String uploadGrade()throws Exception{
         gradeMapper.insert(grade);
         return FINISH;
+    }
+
+    public String obtainReports() throws Exception{
+        grades = gradeMapper.selectReports();
+        int sum = 0;
+        for (Grade grade : grades){
+            sum += grade.getRightCount();
+        }
+        for (Grade grade : grades){
+            grade.setFailCount(grade.getRightCount() * 100 /sum);
+        }
+        return SUCCESS;
     }
 
     static {
@@ -94,6 +108,10 @@ public class PracticeAction extends BaseAction{
 
     public void setGrade(Grade grade) {
         this.grade = grade;
+    }
+
+    public List<Grade> getGrades() {
+        return grades;
     }
 
     public List<Question> getQuestions() {
@@ -161,4 +179,5 @@ public class PracticeAction extends BaseAction{
             this.single = single;
         }
     }
+
 }
