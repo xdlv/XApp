@@ -2,14 +2,23 @@
 web/WEB-INF/lib
 
 web/www/ext
+/web/www/classic.json
+/web/www/modern.json
+/web/www/.sencha
+/web/wwt/.sencha
+/web/wwt/build
+/web/wwt/resources/loading
+/web/wwt/resources/sass/config.rb
+/web/wwt/resources/icons
+/web/wwt/resources/startup
+/web/wwt/resources/sass
+/web/wwt/resources/sass/stylesheets
+/web/wwt/resources/sass/.sass-cache
+/web/wwt/resources/css
+/web/wwt/touch
+/web/wwt/app.json
 web/www/build
-web/www/resources
-
-!web/www/resources/images
-
-web/wwt/touch
-web/wwt/build
-web/wwt/resources
-.idea/workspace.xml
+.idea
+/XApp.iml
 out
 
