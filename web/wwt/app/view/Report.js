@@ -1,9 +1,10 @@
 Ext.define('XApp.view.Report', {
     extend: 'Ext.Container',
     xtype: 'report',
+    requires:['Ext.dataview.List'],
     config: {
         fullscreen: true,
-        layout: 'fit',
+        layout: 'vbox',
         style: 'background: white',
 
         items: [{
@@ -88,7 +89,15 @@ Ext.define('XApp.view.Report', {
                         stroke: '#999'
                     }
                 }
-            ]
+            ],
+            flex: 1
+        },{
+            flex: 1,
+            xtype: 'list',
+            store: Ext.create('XApp.store.Report',{
+                autoLoad: true
+            }),
+            itemTpl: '{city}，总数:{rightCount}，比例：{failCount}%'
         }]
     }
 });
