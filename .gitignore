@@ -1,6 +1,11 @@
 *.class
 web/WEB-INF/lib
 
+/web/www/bootstrap.css
+/web/www/build.xml
+/web/www/bootstrap.js
+/web/www/workspace.json
+/web/www/sass/example
 web/www/ext
 /web/www/classic.json
 /web/www/modern.json
