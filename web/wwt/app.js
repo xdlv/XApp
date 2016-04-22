@@ -14,11 +14,17 @@ Ext.application({
     name: 'XApp',
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+        'Ext.field.Checkbox',
+        'Ext.Audio',
+        'Ext.TitleBar',
+        'Ext.form.FieldSet',
+        'Ext.field.DatePicker',
+        'Ext.Toast'
     ],
-
+    controllers: ['Practice'],
     views: [
-        'Main'
+        'Practice','PracticeResult','Login','Answer'
     ],
 
     icon: {
@@ -40,11 +46,22 @@ Ext.application({
     },
 
     launch: function() {
+        Ext.Ajax.request({
+            url: 'user!version.cmd',
+            success: function (response) {
+                var msg = Ext.JSON.decode(response.responseText, true);
+                console.log(msg);
+                if (msg.version != '1.4'){
+                    window.localStorage.clear();
+                    window.location.reload();
+                }
+            }
+        });
         // Destroy the #appLoadingIndicator element
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('XApp.view.Main'));
+        Ext.Viewport.add(Ext.create('XApp.view.Login'));
     },
 
     onUpdated: function() {

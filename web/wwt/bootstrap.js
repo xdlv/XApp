@@ -21,6 +21,7 @@ Ext.Loader.addClassPathMappings({
   "Ext.Element-static": "touch/src/dom/Element.static.js",
   "Ext.Element-style": "touch/src/dom/Element.style.js",
   "Ext.Element-traversal": "touch/src/dom/Element.traversal.js",
+  "Ext.cmd": "../../../../../bin/Sencha/Cmd/6.0.2.14/plugins/src",
   "Ext.core.DomQuery": "touch/src/dom/Query.js",
   "Ext.device.Purchases.Product": "touch/src/device/purchases/Sencha.js",
   "Ext.device.filesystem.DirectoryEntry": "touch/src/device/filesystem/Sencha.js",
@@ -636,17 +637,6 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
-  "Ext.log.Base": [],
-  "Ext.log.Logger": [],
-  "Ext.log.filter.Filter": [],
-  "Ext.log.filter.Priority": [],
-  "Ext.log.formatter.Default": [],
-  "Ext.log.formatter.Formatter": [],
-  "Ext.log.formatter.Identity": [],
-  "Ext.log.writer.Console": [],
-  "Ext.log.writer.DocumentTitle": [],
-  "Ext.log.writer.Remote": [],
-  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -772,7 +762,22 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
-  "XApp.view.Main": []
+  "XApp.controller.CurrentDz": [],
+  "XApp.controller.HistoryQuery": [],
+  "XApp.controller.License": [],
+  "XApp.controller.Main": [],
+  "XApp.controller.Practice": [],
+  "XApp.view.Answer": [],
+  "XApp.view.BindInfo": [],
+  "XApp.view.CurrentDz": [],
+  "XApp.view.DzView": [],
+  "XApp.view.HistoryQuery": [],
+  "XApp.view.License": [],
+  "XApp.view.Login": [],
+  "XApp.view.Main": [],
+  "XApp.view.Practice": [],
+  "XApp.view.PracticeResult": [],
+  "XApp.view.Subject": []
 });
 
 Ext.ClassManager.addNameAliasMappings({
@@ -1577,17 +1582,6 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.layout.wrapper.BoxDock": [],
   "Ext.layout.wrapper.Dock": [],
   "Ext.layout.wrapper.Inner": [],
-  "Ext.log.Base": [],
-  "Ext.log.Logger": [],
-  "Ext.log.filter.Filter": [],
-  "Ext.log.filter.Priority": [],
-  "Ext.log.formatter.Default": [],
-  "Ext.log.formatter.Formatter": [],
-  "Ext.log.formatter.Identity": [],
-  "Ext.log.writer.Console": [],
-  "Ext.log.writer.DocumentTitle": [],
-  "Ext.log.writer.Remote": [],
-  "Ext.log.writer.Writer": [],
   "Ext.mixin.Bindable": [],
   "Ext.mixin.Filterable": [],
   "Ext.mixin.Mixin": [],
@@ -1725,8 +1719,41 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
+  "XApp.controller.CurrentDz": [],
+  "XApp.controller.HistoryQuery": [],
+  "XApp.controller.License": [],
+  "XApp.controller.Main": [],
+  "XApp.controller.Practice": [],
+  "XApp.view.Answer": [
+    "widget.answer"
+  ],
+  "XApp.view.BindInfo": [
+    "widget.bindInfo"
+  ],
+  "XApp.view.CurrentDz": [
+    "widget.currentQuery"
+  ],
+  "XApp.view.DzView": [
+    "widget.dzview"
+  ],
+  "XApp.view.HistoryQuery": [
+    "widget.hquery"
+  ],
+  "XApp.view.License": [],
+  "XApp.view.Login": [
+    "widget.login"
+  ],
   "XApp.view.Main": [
     "widget.main"
+  ],
+  "XApp.view.Practice": [
+    "widget.practice"
+  ],
+  "XApp.view.PracticeResult": [
+    "widget.practiceresult"
+  ],
+  "XApp.view.Subject": [
+    "widget.subject"
   ]
 });
 
