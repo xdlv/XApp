@@ -21,6 +21,9 @@ Ext.define('XApp.controller.Practice', {
             'button[name=startTest]': {
                 tap: 'startTest'
             },
+            'button[name=viewReport]' :{
+                tap: 'viewReport'
+            },
             'button[name=next]': {
                 tap: 'nextQuestion'
             },
@@ -64,6 +67,12 @@ Ext.define('XApp.controller.Practice', {
             userName: userName,
             city: city
         }));
+    },
+
+    viewReport : function(view){
+        var form = view.up('login');
+        form.destroy();
+        Ext.Viewport.add(Ext.create('XApp.view.Report'));
     },
 
     choseAnswer: function (view, checked) {

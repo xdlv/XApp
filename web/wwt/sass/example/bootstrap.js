@@ -2568,6 +2568,8 @@ Ext.ClassManager.addNameAlternateMappings({
   "XApp.controller.License": [],
   "XApp.controller.Main": [],
   "XApp.controller.Practice": [],
+  "XApp.override.date.Date": [],
+  "XApp.store.Report": [],
   "XApp.view.Answer": [],
   "XApp.view.BindInfo": [],
   "XApp.view.CurrentDz": [],
@@ -2578,6 +2580,7 @@ Ext.ClassManager.addNameAlternateMappings({
   "XApp.view.Main": [],
   "XApp.view.Practice": [],
   "XApp.view.PracticeResult": [],
+  "XApp.view.Report": [],
   "XApp.view.Subject": []
 });
 
@@ -3525,6 +3528,8 @@ Ext.ClassManager.addNameAliasMappings({
   "XApp.controller.License": [],
   "XApp.controller.Main": [],
   "XApp.controller.Practice": [],
+  "XApp.override.date.Date": [],
+  "XApp.store.Report": [],
   "XApp.view.Answer": [
     "widget.answer"
   ],
@@ -3552,6 +3557,9 @@ Ext.ClassManager.addNameAliasMappings({
   ],
   "XApp.view.PracticeResult": [
     "widget.practiceresult"
+  ],
+  "XApp.view.Report": [
+    "widget.report"
   ],
   "XApp.view.Subject": [
     "widget.subject"

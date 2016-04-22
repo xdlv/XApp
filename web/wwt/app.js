@@ -20,12 +20,20 @@ Ext.application({
         'Ext.TitleBar',
         'Ext.form.FieldSet',
         'Ext.field.DatePicker',
-        'Ext.Toast'
+        'Ext.Toast',
+        'Ext.chart.CartesianChart',
+        'Ext.chart.axis.Numeric',
+        'Ext.chart.axis.Category',
+        'Ext.chart.series.Line',
+        'Ext.chart.series.Bar',
+        'Ext.chart.interactions.ItemHighlight',
+        'Ext.chart.interactions.PanZoom'
     ],
     controllers: ['Practice'],
     views: [
-        'Practice','PracticeResult','Login','Answer'
+        'Practice','PracticeResult','Login','Answer','Report'
     ],
+    stores: ['Report'],
 
     icon: {
         '57': 'resources/icons/Icon.png',
@@ -50,7 +58,6 @@ Ext.application({
             url: 'user!version.cmd',
             success: function (response) {
                 var msg = Ext.JSON.decode(response.responseText, true);
-                console.log(msg);
                 if (msg.version != '1.4'){
                     window.localStorage.clear();
                     window.location.reload();
