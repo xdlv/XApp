@@ -2563,7 +2563,23 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
-  "XApp.view.Main": []
+  "XApp.controller.CurrentDz": [],
+  "XApp.controller.HistoryQuery": [],
+  "XApp.controller.License": [],
+  "XApp.controller.Main": [],
+  "XApp.controller.Practice": [],
+  "XApp.override.date.Date": [],
+  "XApp.view.Answer": [],
+  "XApp.view.BindInfo": [],
+  "XApp.view.CurrentDz": [],
+  "XApp.view.DzView": [],
+  "XApp.view.HistoryQuery": [],
+  "XApp.view.License": [],
+  "XApp.view.Login": [],
+  "XApp.view.Main": [],
+  "XApp.view.Practice": [],
+  "XApp.view.PracticeResult": [],
+  "XApp.view.Subject": []
 });
 
 Ext.ClassManager.addNameAliasMappings({
@@ -3505,8 +3521,42 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
+  "XApp.controller.CurrentDz": [],
+  "XApp.controller.HistoryQuery": [],
+  "XApp.controller.License": [],
+  "XApp.controller.Main": [],
+  "XApp.controller.Practice": [],
+  "XApp.override.date.Date": [],
+  "XApp.view.Answer": [
+    "widget.answer"
+  ],
+  "XApp.view.BindInfo": [
+    "widget.bindInfo"
+  ],
+  "XApp.view.CurrentDz": [
+    "widget.currentQuery"
+  ],
+  "XApp.view.DzView": [
+    "widget.dzview"
+  ],
+  "XApp.view.HistoryQuery": [
+    "widget.hquery"
+  ],
+  "XApp.view.License": [],
+  "XApp.view.Login": [
+    "widget.login"
+  ],
   "XApp.view.Main": [
     "widget.main"
+  ],
+  "XApp.view.Practice": [
+    "widget.practice"
+  ],
+  "XApp.view.PracticeResult": [
+    "widget.practiceresult"
+  ],
+  "XApp.view.Subject": [
+    "widget.subject"
   ]
 });
 

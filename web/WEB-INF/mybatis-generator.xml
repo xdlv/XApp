@@ -53,9 +53,12 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false" domainObjectName="Role" />-->
 
-        <table tableName="T_Mod" enableCountByExample="false"
+        <table tableName="t_grade" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false" domainObjectName="Mod" />
+               enableUpdateByExample="false" domainObjectName="Grade"
+                >
+            <ignoreColumn column="upload_time"/>
+        </table>
 
         <!--<table tableName="T_UserRole" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
