@@ -24,6 +24,7 @@ web/www/ext
 /web/wwt/app.json
 web/www/build
 .idea
+/web/wwt/sass
 /XApp.iml
 out
 
