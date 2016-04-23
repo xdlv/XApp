@@ -34,6 +34,7 @@
 		</property>
 	</bean>
 
+
 	<bean id="databaseIdProvider" class="org.apache.ibatis.mapping.VendorDatabaseIdProvider">
 		<property name="properties" ref="vendorProperties"/>
 	</bean>
@@ -43,6 +44,15 @@
 		<property name="dataSource" ref="MyDataSource"/>
 		<property name="databaseIdProvider" ref="databaseIdProvider"/>
 	</bean>
+    <!-- ScanMapperFiles -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="xd.fw.bean.mapper" />
+    </bean>
+
+    <bean name="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="MyDataSource"></property>
+    </bean>
 
 	<tx:advice id="userTxAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
