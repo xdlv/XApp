@@ -20,6 +20,11 @@ public class ParkServiceImpl extends BaseServiceImpl implements ParkService {
     }
 
     @Override
+    public int deleteFinishRecord() {
+        return enterOrOutRecordMapper.deleteFinishRecords();
+    }
+
+    @Override
     public void updateRecordStatus(String orderNum, int retStatus, String msg) {
         enterOrOutRecordMapper.updateRecordStatus(orderNum,retStatus, msg);
     }

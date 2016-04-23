@@ -16,4 +16,5 @@ public interface ParkService extends BaseService{
 
     int getFreeParkStation();
 
+    int deleteFinishRecord();
 }

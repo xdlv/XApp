@@ -11,6 +11,9 @@ create table HJC_ENTEROROUT_RECORD(
 );
 insert into HJC_ENTEROROUT_RECORD values('2016042310000000','À’A123456',0,now(),null,null,0,null);
 
+insert into HJC_ENTEROROUT_RECORD values('2016042310000001'
+  ,'À’A123456',1,now(),now(),1.20,0,null);
+
 drop table IF EXISTS Car_ParkInfo;
 create table Car_ParkInfo(
   LeftNum int

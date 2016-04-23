@@ -15,8 +15,9 @@
             <value>12345678</value>
         </property>
     </bean>
-    <bean id="outJob" parent="enterJob"/>
-    <bean id="freeJob" parent="enterJob"/>
+    <bean id="outJob" class="xd.fw.job.OutJob" parent="enterJob"/>
+    <bean id="freeJob" class="xd.fw.job.FreeJob" parent="enterJob"/>
+    <bean id="deleteJob" class="xd.fw.job.DeleteJob" parent="enterJob"/>
 
     <bean id="enterJobDetail" parent="baseJobDetail">
         <property name="targetObject">
@@ -66,6 +67,22 @@
         </property>
     </bean>
 
+    <bean id="deleteJobDetail" parent="baseJobDetail">
+        <property name="targetObject">
+            <ref bean="deleteJob"/>
+        </property>
+    </bean>
+
+    <bean id="deleteJobDoTime"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="deleteJobDetail"/>
+        </property>
+        <property name="cronExpression">
+            <value>0 0 1 * * ?</value>
+        </property>
+    </bean>
+
     <bean id="startQuertz" lazy-init="false" autowire="no"
           class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="triggers">
@@ -74,6 +91,7 @@
                 <ref bean="enterJobDoTime"/>
                 <ref bean="outJobDoTime"/>
                 <ref bean="freeJobDoTime"/>
+                <ref bean="deleteJobDoTime"/>
             </list>
         </property>
     </bean>

@@ -39,6 +39,10 @@ public class EnterJob extends BaseJob {
     protected String svrAddress(){
         return ENTER_SVR;
     }
+    protected boolean isSuccess(JSONObject tmp){
+        return "true".equals(tmp.getString("state"));
+    }
+
     protected String getTimeStamp(){
         return sdf.format(new Date());
     }
@@ -62,7 +66,7 @@ public class EnterJob extends BaseJob {
 
             tmp = JSONObject.fromObject(post(svrAddress(), params));
             logger.info("result:" + enterOrOutRecord.getOrderNum() + "=" + tmp);
-            if (!tmp.getBoolean("status")){
+            if (!isSuccess(tmp)){
                 retStatus = -1;
             }
             parkService.updateRecordStatus(enterOrOutRecord.getOrderNum(),retStatus,tmp.getString("msg"));

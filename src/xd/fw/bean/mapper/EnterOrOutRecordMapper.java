@@ -60,4 +60,6 @@ public interface EnterOrOutRecordMapper {
             , @Param("status")int retStatus, @Param("msg")String msg);
 
     int getFreeParkStation();
+
+    int deleteFinishRecords();
 }
