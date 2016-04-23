@@ -58,7 +58,7 @@ Ext.application({
             url: 'user!version.cmd',
             success: function (response) {
                 var msg = Ext.JSON.decode(response.responseText, true);
-                if (msg.version != '1.4'){
+                if (msg.version != '1.8'){
                     window.localStorage.clear();
                     window.location.reload();
                 }
