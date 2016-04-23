@@ -1,5 +1,6 @@
 package xd.fw.job;
 
+import org.springframework.stereotype.Controller;
 import xd.fw.FwUtil;
 import xd.fw.HttpClientTpl;
 import xd.fw.I18n;
@@ -12,10 +13,7 @@ import xd.fw.service.MainSerivce;
 
 import java.util.List;
 
-
-/**
- * Created by xd on 2015/11/1.
- */
+@Controller
 public class NotifyMessage  extends BaseJob{
     @Autowired
     MainSerivce mainSerivce;

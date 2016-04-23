@@ -1,8 +1,9 @@
 package xd.fw.job;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import xd.fw.service.MainSerivce;
-
+@Controller
 public class AutoConfirmDzStatus extends BaseJob{
 
     @Autowired
