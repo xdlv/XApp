@@ -9,12 +9,73 @@
                      http://www.springframework.org/schema/aop
                      http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
+    <!--enter-->
+    <bean id="enterJob" class="xd.fw.job.EnterJob">
+        <property name="parkingNo">
+            <value>12345678</value>
+        </property>
+    </bean>
+    <bean id="outJob" parent="enterJob"/>
+    <bean id="freeJob" parent="enterJob"/>
+
+    <bean id="enterJobDetail" parent="baseJobDetail">
+        <property name="targetObject">
+            <ref bean="enterJob"/>
+        </property>
+    </bean>
+
+    <bean id="enterJobDoTime"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="enterJobDetail"/>
+        </property>
+        <property name="cronExpression">
+            <value>0/30 * * * * ?</value>
+        </property>
+    </bean>
+
+    <bean id="outJobDetail" parent="baseJobDetail">
+        <property name="targetObject">
+            <ref bean="outJob"/>
+        </property>
+    </bean>
+
+    <bean id="outJobDoTime"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="outJobDetail"/>
+        </property>
+        <property name="cronExpression">
+            <value>0/30 * * * * ?</value>
+        </property>
+    </bean>
+
+    <bean id="freeJobDetail" parent="baseJobDetail">
+        <property name="targetObject">
+            <ref bean="freeJob"/>
+        </property>
+    </bean>
+
+    <bean id="freeJobDoTime"
+          class="org.springframework.scheduling.quartz.CronTriggerFactoryBean">
+        <property name="jobDetail">
+            <ref bean="freeJobDetail"/>
+        </property>
+        <property name="cronExpression">
+            <value>0/30 * * * * ?</value>
+        </property>
+    </bean>
+
     <bean id="startQuertz" lazy-init="false" autowire="no"
           class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
         <property name="triggers">
             <list>
-                <ref bean="memoryCheckDoTime"/>
+                <!--ref bean="memoryCheckDoTime"/-->
+                <ref bean="enterJobDoTime"/>
+                <ref bean="outJobDoTime"/>
+                <ref bean="freeJobDoTime"/>
             </list>
         </property>
     </bean>
+
 </beans>

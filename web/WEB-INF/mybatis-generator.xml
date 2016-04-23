@@ -5,7 +5,7 @@
 <generatorConfiguration>
 
     <!-- Class Driver Path -->
-    <classPathEntry location="C:/Work/Java/Intelli-WP/XApp/web/WEB-INF/lib/mysql-connector-java-5.1.21.jar"/>
+    <classPathEntry location="C:/Users/xd/Work/Java/XApp/web/WEB-INF/lib/mysql-connector-java-5.1.21.jar"/>
     <context id="context" targetRuntime="MyBatis3">
         <commentGenerator>
             <!-- This property is used to specify whether MBG will include any coments in the generated code -->
@@ -53,9 +53,9 @@
                enableDeleteByExample="false" enableSelectByExample="false"
                enableUpdateByExample="false" domainObjectName="Role" />-->
 
-        <table tableName="T_Mod" enableCountByExample="false"
+        <table tableName="HJC_ENTEROROUT_RECORD" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
-               enableUpdateByExample="false" domainObjectName="Mod" />
+               enableUpdateByExample="false" domainObjectName="EnterOrOutRecord" />
 
         <!--<table tableName="T_UserRole" enableCountByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
