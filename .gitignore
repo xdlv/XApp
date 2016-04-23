@@ -23,7 +23,6 @@ web/www/ext
 /web/wwt/touch
 /web/wwt/bootstrap.js
 /web/wwt/sass/example
-
 web/www/build
 .idea
 /XApp.iml
