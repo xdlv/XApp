@@ -25,5 +25,10 @@ web/www/ext
 web/www/build
 .idea
 /XApp.iml
+/web/wwt/bootstrap.js
+/web/wwt/bootstrap.json
+/web/wwt/sass/example
+/web/wwt/workspace.json
+/web/wwt/build.xml
 out
 
