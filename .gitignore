@@ -21,8 +21,10 @@ web/www/ext
 /web/wwt/resources/sass/.sass-cache
 /web/wwt/resources/css
 /web/wwt/touch
+
 /web/wwt/bootstrap.js
 /web/wwt/sass/example
+
 web/www/build
 .idea
 /XApp.iml

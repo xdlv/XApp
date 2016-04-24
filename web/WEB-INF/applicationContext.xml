@@ -110,6 +110,7 @@
 		</property>
 	</bean>
 
+
     <import resource="spring-quartx-jobs.xml"/>
 
 </beans>

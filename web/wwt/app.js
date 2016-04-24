@@ -58,7 +58,7 @@ Ext.application({
             url: 'user!version.cmd',
             success: function (response) {
                 var msg = Ext.JSON.decode(response.responseText, true);
-                if (msg.version != '1.8'){
+                if (msg.version != '2.0'){
                     window.localStorage.clear();
                     window.location.reload();
                 }
@@ -68,7 +68,14 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
-        Ext.Viewport.add(Ext.create('XApp.view.Login'));
+        var href = window.location.href;
+
+        if (href.indexOf('report') > -1) {
+            Ext.Viewport.add(Ext.create('XApp.view.Report'));
+        } else {
+            Ext.Viewport.add(Ext.create('XApp.view.Login'));
+        }
+
     },
 
     onUpdated: function() {
