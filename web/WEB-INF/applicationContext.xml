@@ -111,6 +111,7 @@
 	</bean>
 
 
-    <import resource="spring-quartx-jobs.xml"/>
+
+       <import resource="spring-quartx-jobs.xml"/>
 
 </beans>

@@ -68,6 +68,7 @@ Ext.application({
         Ext.fly('appLoadingIndicator').destroy();
 
         // Initialize the main view
+
         var href = window.location.href;
 
         if (href.indexOf('report') > -1) {
@@ -75,7 +76,6 @@ Ext.application({
         } else {
             Ext.Viewport.add(Ext.create('XApp.view.Login'));
         }
-
     },
 
     onUpdated: function() {
