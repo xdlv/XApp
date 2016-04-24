@@ -3,6 +3,7 @@ package xd.fw.job;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import sun.misc.BASE64Encoder;
 import xd.fw.HttpClientTpl;
 import xd.fw.bean.EnterOrOutRecord;
 import xd.fw.service.ParkService;
@@ -20,7 +21,7 @@ public class EnterJob extends BaseJob {
 
     final String ENTER_SVR = "http://wap.dh-etc.com/mobile/index.php?act=user&op=approach";
     protected SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
-    final String MD5_CHARSET = "GBK";
+    static final String MD5_CHARSET = "UTF-8";
     String parkingNo;
     final String CODE = "fsAsf2015";
 
@@ -73,13 +74,13 @@ public class EnterJob extends BaseJob {
         }
     }
 
-    public String md5(String... strings) throws Exception {
+    public static String md5(String... strings) throws Exception {
         MessageDigest md = MessageDigest.getInstance("MD5");
         StringBuffer buffer = new StringBuffer();
         for (String string : strings) {
             buffer.append(string);
         }
-        return new String(md.digest(buffer.toString().getBytes(MD5_CHARSET)), MD5_CHARSET);
+        return new BASE64Encoder().encode(buffer.toString().getBytes(MD5_CHARSET));
     }
 
     public JSONObject post(String address, String[][] params){
@@ -109,5 +110,9 @@ public class EnterJob extends BaseJob {
             buffer.append(strs[0]).append("=").append(strs[1]).append("\n");
         }
         return buffer.toString();
+    }
+
+    public static void main(String[] args) throws Exception {
+        System.out.println(md5("ABCD"));
     }
 }
